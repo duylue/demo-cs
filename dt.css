@@ -1,0 +1,49 @@
+table {
+    border: 2px solid black;
+    background-color: aqua;
+    margin: inherit;width:auto; height:auto;
+
+    text-align: center;
+
+
+
+}
+.t2{
+    border: 2px solid black;
+    background-color: aqua;
+    margin: 10px ;width:auto; height:auto;
+    text-align: center;
+
+
+}
+.content {
+     width: 1024px;
+     margin: auto;
+ }
+h2 {
+    text-align: center; color: tomato;
+
+
+}
+td {
+    width: 50px;
+    height: 50px;
+
+}.t{
+     border: 1px bisque;background-color: pink;
+     margin: auto;width: 100px;height: auto;
+ }
+.p{
+    border: 2px springgreen;
+    background-color: bisque;
+
+    width: 120px;
+    height: 25px;
+}
+.m{
+    border: 2px springgreen;
+    background-color: bisque;
+
+    width: 100px;
+    height: 25px;
+}
