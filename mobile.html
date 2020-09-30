@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="dt.css">
+    <script src="dt.js"></script>
+</head>
+<body>
+<body>
+<table class="t2">
+    <tr>
+        <td><h2>Iphone</h2></td>
+    </tr>
+    <tr>
+        <td><img style="width: 400px;height: 350px" src="123.jpg"></td>
+    </tr>
+    <tr>
+        <td><p id="pin" style="color: blue"></p></td>
+    </tr>
+    <tr>
+        <td><p id="check"></p></td>
+    </tr>
+    <tr>
+        <td> <button type="button" onclick="Iphone()" style="background-color: green">Open</button> </td>
+    </tr>
+    <tr><td> <button type="button" onclick="iOff()" style="background-color: green">Off</button> </td></tr>
+    <tr>
+        <td id="out"></td>
+    </tr>
+
+    <tr>
+        <td id="save"></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td><h2>Oppo</h2></td>
+    <tr>
+        <td><img style="height: 350px;width: 400px" src="1122.jpg"></td>
+    </tr>
+    </tr>
+    <tr>
+        <td><p id="pin2" style="color: blue"></p></td>
+    </tr>
+    <tr>
+        <td>
+            <p id="check2">
+
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td> <button type="button" onclick="iOppo()" style="background-color: green">Open</button> </td>
+    </tr>
+    <tr>
+
+        <td> <button type="button" onclick="nOff()" style="background-color: green">Off</button> </td>
+
+    </tr>
+    <tr>
+        <td id="out2"></td>
+    </tr>
+
+    <tr>
+        <td id="save2"></td>
+    </tr>
+</table>
+<script>
+
+    function Iphone() {
+        let p =''
+        for (i=0;i<1;i++){
+
+            p= p+ ' <tr>'+ '<td><p>message</p></td>' + '<td>'
+                +' <td><input type="text" class="p" id="iphone" placeholder="soạn tin"></td>'
+                +'</td>' +'<td><input type="button" value="send" onclick="sendI()"></td>'
+                +'<td><input type="button" value="inbox" onclick="checkInI()"></td>' +
+                '<td><input type="button" value="hộp thư đi" onclick="checkOutI()"></td>' +'</tr>'
+        }
+        document.getElementById('save').innerHTML='<table class="t">'+p+'</table>'
+        iphone.on()
+        iphone.phoneOn()
+    }
+
+    function iOppo() {
+        let p2 =''
+        for (i=0;i<1;i++){
+
+            p2= p2+ ' <tr>'+  '<td><p>message</p></td>' + '<td>'
+                +' <td><input type="text" class="p" id="oppo" placeholder="soạn tin"></td>'
+                +'</td>' +'<td><input type="button" value="Send" onclick="sendO()"></td>'
+                +'<td><input type="button" value="hộp thư đi" onclick="checkOut()"></td>'
+                +'<td><input type="button" value="inbox" onclick="checkInO()"></td>'+
+                '<td><input type="button" value="Music" onclick="music()"></td>'+'</tr>'
+        }
+        document.getElementById('save2').innerHTML='<table class="t">'+p2+'</table>'
+        oppo.on()
+        oppo.phoneOn()
+
+    }
+
+    function sendO() {
+        let message =document.getElementById('oppo').value;
+        oppo.checkMessage(message)
+        oppo.sendMessage(iphone)
+        document.getElementById('check').innerHTML= 'You have a new Massage'
+        document.getElementById('oppo').value= ''
+        var audio1 = new Audio('11.mp3');
+        audio1.play();
+        pinO()
+
+    }
+    function checkOut() {
+        let h = ''
+        for (i=0;i<oppo.getOutbox().length;i++){
+            h+= '<ul>'
+            h+= '<li>'
+            h+= oppo.getOutbox()[i]
+            h+= '</li>'
+            h+= '</ul>'
+        }
+        document.getElementById('out2').innerHTML = h
+    }
+    function nOff() {
+        document.getElementById('save2').innerHTML= ''
+        document.getElementById('out2').innerHTML= ''
+        oppo.off()
+        oppo.phoneOn()
+    }
+    function iOff() {
+        document.getElementById('save').innerHTML= ''
+        document.getElementById('out').innerHTML= ''
+        iphone.off()
+    iphone.phoneOn()
+    }
+    function sendI() {
+        let massage = document.getElementById('iphone').value;
+        iphone.checkMessage(massage)
+        iphone.sendMessage(oppo)
+        document.getElementById('check2').innerHTML= 'You have a new Massage'
+        document.getElementById('iphone').value = ''
+        var audio = new Audio('1.mp3');
+        audio.play();
+        pinI()
+
+    }
+    function checkOutI() {
+
+        let h = ''
+        for (i=0;i<iphone.getOutbox().length;i++){
+            h+= '<ul>'
+            h+= '<li>'
+            h+= iphone.getOutbox()[i]
+            h+= '</li>'
+            h+= '</ul>'
+        }
+        document.getElementById('out').innerHTML =  h
+    }
+    function checkInI() {
+        let h = ''
+        for (i=0;i<iphone.getInbox().length;i++){
+            h+= '<ul>'
+            h+= '<li>'
+            h+= iphone.getInbox()[i]
+            h+= '</li>'
+            h+= '</ul>'
+        }
+        document.getElementById('out').innerHTML = h
+        document.getElementById('check').innerHTML= ''
+
+    }
+    function music() {
+        var audio2 = new Audio('a.mp3')
+        audio2.play()
+
+    }
+    function checkInO() {
+        let h = ''
+        for (i=0;i<oppo.getInbox().length;i++){
+            h+= '<ul>'
+            h+= '<li>'
+            h+= oppo.getInbox()[i]
+            h+= '</li>'
+            h+= '</ul>'
+        }
+        document.getElementById('out2').innerHTML = h
+        document.getElementById('check2').innerHTML= ''
+
+    }
+    function pinI() {
+        document.getElementById('pin').innerHTML='pin '+ iphone.getPin()
+
+    }
+    function pinO() {
+        document.getElementById('pin2').innerHTML='pin '+ oppo.getPin()
+
+    }
+
+    pinI()
+    pinO()
+
+
+  </script>
+</body>
+</body>
+</html>
